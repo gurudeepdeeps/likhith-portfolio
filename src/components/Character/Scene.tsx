@@ -29,10 +29,11 @@ const Scene = () => {
 
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: true,
+        antialias: false,
+        powerPreference: "high-performance",
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -106,8 +107,19 @@ const Scene = () => {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+      const landingSection = document.querySelector(".landing-section");
       const animate = () => {
         requestAnimationFrame(animate);
+        
+        let isActive = true;
+        if (landingSection) {
+          const rect = landingSection.getBoundingClientRect();
+          // Stop rendering if landing is scrolled way up
+          if (rect.bottom < -100) isActive = false;
+        }
+
+        if (!isActive) return;
+
         if (headBone) {
           handleHeadRotation(
             headBone,

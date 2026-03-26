@@ -30,6 +30,21 @@
   letter-spacing: 1px;
 }
 
+.highlight {
+  background: var(--accentColor) !important;
+  color: var(--backgroundColor) !important;
+  padding: 8px 20px !important;
+  border-radius: 8px !important;
+  font-weight: 800 !important;
+  width: fit-content;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(194, 164, 255, 0.4);
+}
+
+
+
+
+
 @media only screen and (min-width: 600px) {
   .about-section {
     justify-content: center;

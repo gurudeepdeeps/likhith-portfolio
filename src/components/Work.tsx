@@ -1,53 +1,61 @@
+import { useEffect, useRef } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
-  useGSAP(() => {
-  let translateX: number = 0;
+  const container = useRef<HTMLDivElement>(null);
 
-  function setTranslateX() {
-    const box = document.getElementsByClassName("work-box");
-    const rectLeft = document
-      .querySelector(".work-container")!
-      .getBoundingClientRect().left;
-    const rect = box[0].getBoundingClientRect();
-    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-    let padding: number =
-      parseInt(window.getComputedStyle(box[0]).padding) / 2;
-    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-  }
+  useEffect(() => {
+    // Explicitly kill any existing Work triggers to prevent double-pinning
+    ScrollTrigger.getAll().forEach(st => {
+      if (st.vars.trigger === ".work-section" || st.vars.id === "work") {
+        st.kill();
+      }
+    });
 
-  setTranslateX();
+    let ctx = gsap.context(() => {
+      const box = gsap.utils.toArray<HTMLElement>(".work-box");
+      const workSection = container.current;
+      const workContainer = workSection?.querySelector(".work-container");
 
-  let timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".work-section",
-      start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
-      scrub: true,
-      pin: true,
-      id: "work",
-    },
-  });
+      if (!workSection || !workContainer || box.length === 0) return;
 
-  timeline.to(".work-flex", {
-    x: -translateX,
-    ease: "none",
-  });
+      const getTranslateX = () => {
+        const rectLeft = workContainer.getBoundingClientRect().left;
+        const rect = box[0].getBoundingClientRect();
+        const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
+        let padding: number = parseInt(window.getComputedStyle(box[0]).padding) / 2;
+        return (rect.width * box.length) - (rectLeft + parentWidth) + padding;
+      };
 
-  // Clean up (optional, good practice)
-  return () => {
-    timeline.kill();
-    ScrollTrigger.getById("work")?.kill();
-  };
-}, []);
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: workSection,
+          start: "top top",
+          end: () => `+=${getTranslateX()}`,
+          scrub: true,
+          pin: true,
+          id: "work",
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
+      })
+      .to(".work-flex", {
+        x: () => -getTranslateX(),
+        ease: "none",
+      });
+    }, container);
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getById("work")?.kill();
+    };
+  }, []);
   return (
-    <div className="work-section" id="work">
+    <div className="work-section" id="work" ref={container}>
       <div className="work-container section-container">
         <h2>
           My <span>Work</span>

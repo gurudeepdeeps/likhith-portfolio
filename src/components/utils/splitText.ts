@@ -26,13 +26,17 @@ export default function setSplitText() {
       para.split?.revert();
     }
 
+    const isHighlighted = para.classList.contains("highlight");
+    
     para.split = new SplitText(para, {
       type: "lines,words",
       linesClass: "split-line",
     });
 
+    const animationTarget = isHighlighted ? para : para.split.words;
+
     para.anim = gsap.fromTo(
-      para.split.words,
+      animationTarget,
       { autoAlpha: 0, y: 80 },
       {
         autoAlpha: 1,
@@ -44,10 +48,11 @@ export default function setSplitText() {
         duration: 1,
         ease: "power3.out",
         y: 0,
-        stagger: 0.02,
+        stagger: isHighlighted ? 0 : 0.02,
       }
     );
   });
+
   titles.forEach((title: ParaElement) => {
     if (title.anim) {
       title.anim.progress(1).kill();
