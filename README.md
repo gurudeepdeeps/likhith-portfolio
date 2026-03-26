@@ -1,65 +1,73 @@
-# Likhi's Portfolio Website - Overview 🚀
+# Likhith - Portfolio 🎥
 
-This repository contains the open-source version of my personal portfolio website.  
-Feel free to explore the code and use it for learning and inspiration.
-
----
-
-## ⚠️ Usage Notice
-
-This project is shared for learning purposes only.
-
-Please do NOT:
-- Clone or replicate the full website or design
-- Repost it with minor content changes
-- Use this project for commercial/client work
-- Create tutorials or content using this exact project
-
-If you use parts of the code, you must provide proper credit linking back to the original repository.
-
-Build your own version — don’t just copy.
-
-— Moncy Yohannan
+Likhith is a professional **Video Editor and Content Creator** dedicated to turning raw footage into cinematic narratives. This repository contains the source code for his personal portfolio website, featuring high-end animations and interactive 3D elements.
 
 ---
 
-## 🛠️ Instructions
+## ✨ Features
 
-I have modified the GSAP Club plugins using trial versions.  
-⚠️ Note: Trial plugins cannot be used for production or hosting.
-
-For official GSAP Club plugins, refer here:  
-https://gsap.com/docs/v3/Installation/
+- 🎭 **Cinematic Hero Section**: Engaging entrance with a 3D character avatar.
+- 📺 **Video Editing Showcase**: Integrated sections to display past works and collaborations.
+- 🔮 **Interactive Softwares**: A custom 3D physics-based "My Softwares" section representing professional tools (Premiere Pro, After Effects, DaVinci Resolve, Photoshop).
+- ⚡ **GSAP Animations**: Fluid scrolling effects and split-text animations for a premium feel.
+- 📱 **Fully Responsive**: Optimized for high-end desktop experiences and mobile devices.
 
 ---
 
 ## ⚙️ Tech Stack
 
-React • TypeScript • GSAP • Three.js • WebGL • HTML • CSS • JavaScript
+- **Core**: React & TypeScript
+- **Animations**: GSAP (ScrollTrigger, SplitText, ScrollSmoother)
+- **3D Graphics**: Three.js & React Three Fiber
+- **Physics**: Rapier (via @react-three/rapier)
+- **Styling**: Vanilla CSS
 
 ---
 
-## 🎨 Assets Usage
+## 🛠️ Getting Started
 
-Some 3D assets included in this repository are free to use for learning purposes.
+### Prerequisites
 
-However:
+- Node.js (v18+)
+- npm or yarn
 
-- The original 3D avatar used on my live portfolio is NOT included in this repository
-- That avatar is a custom asset created over ~1 month
-- It is not open source and not available for reuse
+### Installation
 
-Any usage, extraction, or redistribution of that avatar from my live website is strictly prohibited.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/gurudeepdeeps/likhith-portfolio.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
 ---
 
-![Protfolio-Preview](https://github.com/user-attachments/assets/3c4557e7-6392-4928-b8a9-7b2476ef4edd)
+## 🎨 Asset Information
+
+- **3D Character**: The custom 3D avatar is integrated using React Three Fiber.
+- **GSAP Trial**: This project uses GSAP Trial plugins. Note that for production deployment, a GSAP Club license may be required.
 
 ---
 
-## 📄 License
+## 📄 Credits
 
-This project is licensed under the Personal Portfolio License (PPL) v1.0.
+- **Design & Performance**: Built with a focus on cinematic motion and high-end editorial aesthetics.
+- **Special Thanks**: Inspired by the modern creative community.
 
-See the LICENSE file for full details
+---
 
+## 📜 License
+
+This project is shared for learning and inspiration purposes. Please provide proper credit if you use portions of the code.
+
+---
+
+Developed with ❤️ for Likhith.
