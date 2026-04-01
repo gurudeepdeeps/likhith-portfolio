@@ -1,73 +1,95 @@
-# Likhith - Portfolio 🎥
+# Likhith Portfolio
 
-Likhith is a professional **Video Editor and Content Creator** dedicated to turning raw footage into cinematic narratives. This repository contains the source code for his personal portfolio website, featuring high-end animations and interactive 3D elements.
+A cinematic portfolio web experience for Likhith, built with React, TypeScript, GSAP, and React Three Fiber.
 
----
+The project combines scroll-driven storytelling, custom motion effects, and interactive 3D scenes to showcase editing work and creative identity.
 
-## ✨ Features
+## Highlights
 
-- 🎭 **Cinematic Hero Section**: Engaging entrance with a 3D character avatar.
-- 📺 **Video Editing Showcase**: Integrated sections to display past works and collaborations.
-- 🔮 **Interactive Softwares**: A custom 3D physics-based "My Softwares" section representing professional tools (Premiere Pro, After Effects, DaVinci Resolve, Photoshop).
-- ⚡ **GSAP Animations**: Fluid scrolling effects and split-text animations for a premium feel.
-- 📱 **Fully Responsive**: Optimized for high-end desktop experiences and mobile devices.
+- Cinematic landing experience with animated intro transitions
+- Interactive 3D character section using React Three Fiber and Three.js
+- Motion-heavy UI powered by GSAP and custom animation utilities
+- Responsive sections for about, work, software stack, and contact
+- Custom cursor and hover interactions for editorial feel
 
----
+## Tech Stack
 
-## ⚙️ Tech Stack
+- React 18 + TypeScript
+- Vite 5
+- GSAP (+ @gsap/react)
+- Three.js + @react-three/fiber + @react-three/drei
+- @react-three/rapier for physics behavior
+- Vanilla CSS modules by section/component
 
-- **Core**: React & TypeScript
-- **Animations**: GSAP (ScrollTrigger, SplitText, ScrollSmoother)
-- **3D Graphics**: Three.js & React Three Fiber
-- **Physics**: Rapier (via @react-three/rapier)
-- **Styling**: Vanilla CSS
+## Prerequisites
 
----
+- Node.js 18+
+- npm 9+
 
-## 🛠️ Getting Started
-
-### Prerequisites
-
-- Node.js (v18+)
-- npm or yarn
-
-### Installation
+## Local Development
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/gurudeepdeeps/likhith-portfolio.git
-   ```
+
+```bash
+git clone https://github.com/gurudeepdeeps/likhith-portfolio.git
+cd likhith-portfolio
+```
 
 2. Install dependencies:
-   ```bash
-   npm install
-   ```
 
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+```
 
----
+3. Start the dev server:
 
-## 🎨 Asset Information
+```bash
+npm run dev
+```
 
-- **3D Character**: The custom 3D avatar is integrated using React Three Fiber.
-- **GSAP Trial**: This project uses GSAP Trial plugins. Note that for production deployment, a GSAP Club license may be required.
+The Vite dev server runs with host exposure (`vite --host`) so it can be accessed from your local network if needed.
 
----
+## Available Scripts
 
-## 📄 Credits
+- `npm run dev` - Start development server
+- `npm run build` - Type-check and create production build
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint checks
 
-- **Design & Performance**: Built with a focus on cinematic motion and high-end editorial aesthetics.
-- **Special Thanks**: Inspired by the modern creative community.
+## Project Structure
 
----
+```text
+src/
+   components/
+      Character/        # 3D scene, character setup, animation + input utils
+      styles/           # Section-level CSS files
+      *.tsx             # UI sections (Landing, About, Work, Contact, etc.)
+   context/            # React context providers
+   data/               # Static animation/bone metadata
+   App.tsx             # Main page composition
+   main.tsx            # App bootstrap
+public/
+   images/             # Public image assets
+   models/             # Encrypted/packaged 3D model assets
+   draco/              # Draco decoder files
+```
 
-## 📜 License
+## Assets and Notes
 
-This project is shared for learning and inspiration purposes. Please provide proper credit if you use portions of the code.
+- 3D models and environment assets are served from `public/models`.
+- Draco decoder files are included under `public/draco` for model compression support.
+- If premium GSAP plugins are used in your environment, ensure your license/compliance setup is correct before commercial deployment.
 
----
+## Deployment
 
-Developed with ❤️ for Likhith.
+Build the project:
+
+```bash
+npm run build
+```
+
+Then deploy the generated `dist` folder to any static hosting platform (for example: Vercel, Netlify, Cloudflare Pages, or GitHub Pages).
+
+## License
+
+See the `LICENSE` file for licensing details.
